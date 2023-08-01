@@ -94,12 +94,17 @@ class PostCommentViewSet(
 ):
     #queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         post = self.kwargs.get("post_id")
         queryset = Comment.objects.filter(post_id=post)
         return queryset
+    
+    def get_permissions(self):
+        if self.action in ["create"]:
+            return [IsOwnerOrReadOnly()]
+        return []
 
     #def list(self, request, post_id=None):
     #    post = get_object_or_404(Post, id=post_id)
