@@ -34,8 +34,9 @@ class PostListSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
             "comments_cnt",
+            "likes",
         ]
-        read_only_fields = ["id", "created_at", "updated_at", "comments_cnt"]
+        read_only_fields = ["id", "created_at", "updated_at", "likes", "comments_cnt"]
 
 
 class CommentSerializer(serializers.ModelSerializer):
