@@ -30,7 +30,7 @@ class PostViewSet(viewsets.ModelViewSet):
         return Response()
 
     def get_permissions(self):
-        if self.action in ["update", "destroy", "partial_update"]:
+        if self.action in ["create", "update", "destroy", "partial_update"]:
             return [IsOwnerOrReadOnly()]
         return []
     
